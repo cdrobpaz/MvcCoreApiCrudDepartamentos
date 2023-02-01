@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MvcCoreApiCrudDepartamentos.Models.Departamento>
+
+@{
+    List<string> depts = ViewData["LOCALIDADES"] as List<string>;
+}
+
+@{
+    ViewData["Title"] = "DepartamentosLocalidad";
+}
+
+<h1>DepartamentosLocalidad</h1>
+
+<form method="post">
+    <label>Seleccione un oficio:</label>
+    <select name="localidad" class="form-control">
+        @foreach(string dept in depts)
+        {
+            <option value="@dept">@dept</option>
+        }
+    </select>
+    <button class="btn btn-outline-info">
+        Buscar empleados
+    </button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                <a class="btn btn-info" asp-controller="Departamentos" asp-action="Details" asp-route-deptno="@item.DeptNo">
+                    Detalles
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
