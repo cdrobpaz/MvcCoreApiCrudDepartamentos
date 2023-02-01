@@ -26,9 +26,9 @@ namespace MvcCoreApiCrudDepartamentos.Controllers
             ViewData["LOCALIDADES"] = locs;
             return View(depts);
         }
-        public async Task<IActionResult> Details(int deptno)
+        public async Task<IActionResult> Details(int id)
         {
-            Departamento dept = await service.FindDepartamentoAsync(deptno);
+            Departamento dept = await service.FindDepartamentoAsync(id);
             return View(dept);
         }
 

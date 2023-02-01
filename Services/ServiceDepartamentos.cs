@@ -39,7 +39,7 @@ namespace MvcCoreApiCrudDepartamentos.Services
         }
         public async Task<Departamento> FindDepartamentoAsync(int id)
         {
-            string request = "/api/departamentos/{id}";
+            string request = "/api/departamentos/" + id;
             Departamento dept = await GetDatosApiAsync<Departamento>(request);
             return dept;
         }
